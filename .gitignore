@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+*.zip
+
+# CDK
+infrastructure/cdk.out/
+infrastructure/.cdk.staging/
+cdk.context.json
+
+# AWS
+.aws/
+*.pem
+*.key
+
+# Node
+node_modules/
+dashboard/frontend/build/
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
