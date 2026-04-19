@@ -1,0 +1,229 @@
+{
+ "Resources": {
+  "LambdaExecutionRoleD5C26073": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ],
+    "RoleName": "csr-lambda-execution-role",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrIamStack/LambdaExecutionRole/Resource"
+   }
+  },
+  "LambdaExecutionRoleDefaultPolicy6D69732F": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::ImportValue": "CsrDatabaseStack:ExportsOutputFnGetAttAgenciesC742B758Arn2978F2BB"
+        },
+        {
+         "Fn::ImportValue": "CsrDatabaseStack:ExportsOutputFnGetAttAuditLogA5B7094EArn61A886D9"
+        },
+        {
+         "Fn::ImportValue": "CsrDatabaseStack:ExportsOutputFnGetAttCertInventoryD2362D85Arn50BB54FA"
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::ImportValue": "CsrDatabaseStack:ExportsOutputFnGetAttCertInventoryD2362D85Arn50BB54FA"
+           },
+           "/index/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "s3:Abort*",
+        "s3:DeleteObject*",
+        "s3:GetBucket*",
+        "s3:GetObject*",
+        "s3:List*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::ImportValue": "CsrStorageStack:ExportsOutputFnGetAttCertStoreDBEFDCCFArn6B474786"
+        },
+        {
+         "Fn::ImportValue": "CsrStorageStack:ExportsOutputFnGetAttReportsStoreA9C48755Arn9C03AA0F"
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::ImportValue": "CsrStorageStack:ExportsOutputFnGetAttCertStoreDBEFDCCFArn6B474786"
+           },
+           "/*"
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::ImportValue": "CsrStorageStack:ExportsOutputFnGetAttReportsStoreA9C48755Arn9C03AA0F"
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream",
+        "events:PutEvents",
+        "execute-api:ManageConnections",
+        "ses:SendEmail",
+        "ses:SendRawEmail",
+        "sns:Publish",
+        "ssm:DescribeInstanceInformation",
+        "ssm:GetCommandInvocation",
+        "ssm:SendCommand",
+        "states:DescribeExecution",
+        "states:ListExecutions",
+        "states:SendTaskFailure",
+        "states:SendTaskSuccess",
+        "states:StartExecution"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "LambdaExecutionRoleDefaultPolicy6D69732F",
+    "Roles": [
+     {
+      "Ref": "LambdaExecutionRoleD5C26073"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrIamStack/LambdaExecutionRole/DefaultPolicy/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzKx1DNQTCwv1k1OydbNyUzSqw4uSUzO1gEKxWcm5upVB+XnpOo4p+WB6YD8nMzkShAXwqqt1QmoLMnIz9M31jM00TNWzCrOzNQtKs0rycxN1QuC0AAUpLfTZgAAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrIamStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "ExportsOutputFnGetAttLambdaExecutionRoleD5C26073ArnADAF6607": {
+   "Value": {
+    "Fn::GetAtt": [
+     "LambdaExecutionRoleD5C26073",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "CsrIamStack:ExportsOutputFnGetAttLambdaExecutionRoleD5C26073ArnADAF6607"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,437 @@
+{
+  "/CsrApiStack": [
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Environment",
+          "value": "demo"
+        },
+        {
+          "key": "Project",
+          "value": "CSR-Automated-ITS"
+        }
+      ]
+    }
+  ],
+  "/CsrApiStack/ApiUrl": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiUrl"
+    }
+  ],
+  "/CsrApiStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/CsrApiStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/CsrApiStack/DashboardApi/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DashboardApi9FF75625"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiF94C1EAF"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Account": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiAccount18777C3D"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Endpoint": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiEndpointD4BC8564"
+    }
+  ],
+  "/CsrApiStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/CsrApiStack/CsrApi/CloudWatchRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiCloudWatchRole304A6DBA"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Deployment/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiDeploymentEB01FC667250c028c49c727a4243b2fc9a98fde2"
+    }
+  ],
+  "/CsrApiStack/CsrApi/DeploymentStage.prod/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiDeploymentStageprod3EABF45C"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiOPTIONS72D32D40"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicerts6D561D6B"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/audit/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiaudit72A87EC9"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/agencies/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiagenciesA05D682C"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/governance/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApigovernance5D2EB9C1"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/reports/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApireports3B670BDE"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/demo/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApidemoA830F79F"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertsOPTIONS3BB96CD5"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/GET/ApiPermission.CsrApiStackCsrApi41EE7D3E.GET..certs": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertsGETApiPermissionCsrApiStackCsrApi41EE7D3EGETcerts1A0BB12F"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/GET/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.GET..certs": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertsGETApiPermissionTestCsrApiStackCsrApi41EE7D3EGETcerts9DDC1FAC"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertsGETE92E29AC"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/POST/ApiPermission.CsrApiStackCsrApi41EE7D3E.POST..certs": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertsPOSTApiPermissionCsrApiStackCsrApi41EE7D3EPOSTcerts26A4A10C"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/POST/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.POST..certs": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertsPOSTApiPermissionTestCsrApiStackCsrApi41EE7D3EPOSTcertsA551AB0B"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertsPOST73C583F8"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidE73A02F5"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/audit/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiauditOPTIONS90485384"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/audit/GET/ApiPermission.CsrApiStackCsrApi41EE7D3E.GET..audit": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiauditGETApiPermissionCsrApiStackCsrApi41EE7D3EGETaudit365EF769"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/audit/GET/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.GET..audit": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiauditGETApiPermissionTestCsrApiStackCsrApi41EE7D3EGETaudit66CB7E5E"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/audit/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiauditGET2845C3DC"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/audit/{cert_id}/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiauditcertid36C5EBBF"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/agencies/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiagenciesOPTIONS00E2D3C8"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/agencies/GET/ApiPermission.CsrApiStackCsrApi41EE7D3E.GET..agencies": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiagenciesGETApiPermissionCsrApiStackCsrApi41EE7D3EGETagenciesE05B4139"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/agencies/GET/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.GET..agencies": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiagenciesGETApiPermissionTestCsrApiStackCsrApi41EE7D3EGETagencies27C1A4DB"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/agencies/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiagenciesGET9FCDF97A"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/governance/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApigovernanceOPTIONS541FD643"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/governance/approve/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApigovernanceapprove8EC4B282"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/reports/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApireportsOPTIONS8348D897"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/reports/GET/ApiPermission.CsrApiStackCsrApi41EE7D3E.GET..reports": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApireportsGETApiPermissionCsrApiStackCsrApi41EE7D3EGETreports209EEEE8"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/reports/GET/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.GET..reports": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApireportsGETApiPermissionTestCsrApiStackCsrApi41EE7D3EGETreports0F1F233D"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/reports/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApireportsGETAD8B9423"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/reports/POST/ApiPermission.CsrApiStackCsrApi41EE7D3E.POST..reports": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApireportsPOSTApiPermissionCsrApiStackCsrApi41EE7D3EPOSTreports82C1E8F5"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/reports/POST/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.POST..reports": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApireportsPOSTApiPermissionTestCsrApiStackCsrApi41EE7D3EPOSTreportsB6BBBFDF"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/reports/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApireportsPOST4E21E0B1"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/demo/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApidemoOPTIONS3DBF1466"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/demo/run/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApidemorunF184DD8B"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidOPTIONSB81ECDA6"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/GET/ApiPermission.CsrApiStackCsrApi41EE7D3E.GET..certs.{cert_id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidGETApiPermissionCsrApiStackCsrApi41EE7D3EGETcertscertid54370405"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/GET/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.GET..certs.{cert_id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidGETApiPermissionTestCsrApiStackCsrApi41EE7D3EGETcertscertidC0A295F9"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidGETEEBA58A6"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/PUT/ApiPermission.CsrApiStackCsrApi41EE7D3E.PUT..certs.{cert_id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidPUTApiPermissionCsrApiStackCsrApi41EE7D3EPUTcertscertid5C4E61DB"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/PUT/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.PUT..certs.{cert_id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidPUTApiPermissionTestCsrApiStackCsrApi41EE7D3EPUTcertscertid8AF71A18"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/PUT/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidPUT2EBE8E29"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/trigger/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidtrigger6990E15E"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/audit/{cert_id}/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiauditcertidOPTIONS8811C132"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/audit/{cert_id}/GET/ApiPermission.CsrApiStackCsrApi41EE7D3E.GET..audit.{cert_id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiauditcertidGETApiPermissionCsrApiStackCsrApi41EE7D3EGETauditcertid19349A1B"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/audit/{cert_id}/GET/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.GET..audit.{cert_id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiauditcertidGETApiPermissionTestCsrApiStackCsrApi41EE7D3EGETauditcertidFDE561E5"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/audit/{cert_id}/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApiauditcertidGET3B37783E"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/governance/approve/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApigovernanceapproveOPTIONS9FBBE5E2"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/governance/approve/POST/ApiPermission.CsrApiStackCsrApi41EE7D3E.POST..governance.approve": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApigovernanceapprovePOSTApiPermissionCsrApiStackCsrApi41EE7D3EPOSTgovernanceapprove4F019164"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/governance/approve/POST/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.POST..governance.approve": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApigovernanceapprovePOSTApiPermissionTestCsrApiStackCsrApi41EE7D3EPOSTgovernanceapprove3FAA3DDB"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/governance/approve/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApigovernanceapprovePOST19CC7BC3"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/demo/run/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApidemorunOPTIONSD562AB2E"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/demo/run/POST/ApiPermission.CsrApiStackCsrApi41EE7D3E.POST..demo.run": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApidemorunPOSTApiPermissionCsrApiStackCsrApi41EE7D3EPOSTdemorunEC43AEAD"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/demo/run/POST/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.POST..demo.run": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApidemorunPOSTApiPermissionTestCsrApiStackCsrApi41EE7D3EPOSTdemorun7DDD03FE"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/demo/run/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApidemorunPOST6DE37F18"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/trigger/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidtriggerOPTIONSFE3AFFE8"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/trigger/POST/ApiPermission.CsrApiStackCsrApi41EE7D3E.POST..certs.{cert_id}.trigger": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidtriggerPOSTApiPermissionCsrApiStackCsrApi41EE7D3EPOSTcertscertidtrigger15DAFB38"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/trigger/POST/ApiPermission.Test.CsrApiStackCsrApi41EE7D3E.POST..certs.{cert_id}.trigger": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidtriggerPOSTApiPermissionTestCsrApiStackCsrApi41EE7D3EPOSTcertscertidtrigger9B078177"
+    }
+  ],
+  "/CsrApiStack/CsrApi/Default/certs/{cert_id}/trigger/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrApicertscertidtriggerPOSTE625FC90"
+    }
+  ]
+}

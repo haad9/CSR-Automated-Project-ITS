@@ -1,0 +1,137 @@
+{
+  "/CsrStorageStack": [
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Environment",
+          "value": "demo"
+        },
+        {
+          "key": "Project",
+          "value": "CSR-Automated-ITS"
+        }
+      ]
+    }
+  ],
+  "/CsrStorageStack/Custom::S3AutoDeleteObjectsCustomResourceProvider": [
+    {
+      "type": "aws:cdk:is-custom-resource-handler-customResourceProvider",
+      "data": true
+    }
+  ],
+  "/CsrStorageStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/CsrStorageStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/CsrStorageStack/CertStore/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CertStoreDBEFDCCF"
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketAutoDeleteObjects"
+      }
+    }
+  ],
+  "/CsrStorageStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
+    }
+  ],
+  "/CsrStorageStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
+    }
+  ],
+  "/CsrStorageStack/ReportsStore/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ReportsStoreA9C48755"
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketAutoDeleteObjects"
+      }
+    }
+  ],
+  "/CsrStorageStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/CsrStorageStack/Exports/Output{\"Fn::GetAtt\":[\"CertStoreDBEFDCCF\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttCertStoreDBEFDCCFArn6B474786"
+    }
+  ],
+  "/CsrStorageStack/Exports/Output{\"Fn::GetAtt\":[\"ReportsStoreA9C48755\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttReportsStoreA9C48755Arn9C03AA0F"
+    }
+  ],
+  "/CsrStorageStack/Exports/Output{\"Ref\":\"CertStoreDBEFDCCF\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefCertStoreDBEFDCCFB8918124"
+    }
+  ],
+  "/CsrStorageStack/Exports/Output{\"Ref\":\"ReportsStoreA9C48755\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefReportsStoreA9C4875555D36C85"
+    }
+  ],
+  "/CsrStorageStack/CertStore/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CertStorePolicy032189E9"
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketPolicyStatements"
+      }
+    }
+  ],
+  "/CsrStorageStack/CertStore/AutoDeleteObjectsCustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CertStoreAutoDeleteObjectsCustomResource4385A6AA"
+    }
+  ],
+  "/CsrStorageStack/ReportsStore/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ReportsStorePolicy85506F73"
+    },
+    {
+      "type": "aws:cdk:analytics:mixin",
+      "data": {
+        "mixin": "aws-cdk-lib.aws_s3.mixins.BucketPolicyStatements"
+      }
+    }
+  ],
+  "/CsrStorageStack/ReportsStore/AutoDeleteObjectsCustomResource/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ReportsStoreAutoDeleteObjectsCustomResource83F2E0DE"
+    }
+  ]
+}

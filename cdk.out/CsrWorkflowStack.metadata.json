@@ -1,0 +1,167 @@
+{
+  "/CsrWorkflowStack": [
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Environment",
+          "value": "demo"
+        },
+        {
+          "key": "Project",
+          "value": "CSR-Automated-ITS"
+        }
+      ]
+    }
+  ],
+  "/CsrWorkflowStack/StateMachineArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "StateMachineArn"
+    }
+  ],
+  "/CsrWorkflowStack/AlertTopicArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AlertTopicArn"
+    }
+  ],
+  "/CsrWorkflowStack/GovernanceTopicArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "GovernanceTopicArn"
+    }
+  ],
+  "/CsrWorkflowStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/CsrWorkflowStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/CsrWorkflowStack/AlertTopic/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AlertTopic2720D535"
+    }
+  ],
+  "/CsrWorkflowStack/GovernanceTopic/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "GovernanceTopic914806E2"
+    }
+  ],
+  "/CsrWorkflowStack/RenewalInitiator/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RenewalInitiator485BFFE9"
+    }
+  ],
+  "/CsrWorkflowStack/CsrGenerator/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrGenerator2C36D244"
+    }
+  ],
+  "/CsrWorkflowStack/AcmeClient/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AcmeClient734482EA"
+    }
+  ],
+  "/CsrWorkflowStack/GovernanceGate/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "GovernanceGateF0C52C19"
+    }
+  ],
+  "/CsrWorkflowStack/Deployer/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "Deployer92EF8763"
+    }
+  ],
+  "/CsrWorkflowStack/Validator/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "Validator9353A022"
+    }
+  ],
+  "/CsrWorkflowStack/RenewalCloser/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RenewalCloser68728EB8"
+    }
+  ],
+  "/CsrWorkflowStack/ExceptionHandler/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExceptionHandler7BB61FA6"
+    }
+  ],
+  "/CsrWorkflowStack/ReportGenerator/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ReportGeneratorCE152FAC"
+    }
+  ],
+  "/CsrWorkflowStack/AuditWriter/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AuditWriterBC8102BB"
+    }
+  ],
+  "/CsrWorkflowStack/Monitor/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "Monitor5337499C"
+    }
+  ],
+  "/CsrWorkflowStack/CertLifecycleMachine/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CertLifecycleMachine2C3E2C93"
+    }
+  ],
+  "/CsrWorkflowStack/DailyMonitorRule/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DailyMonitorRuleAD12D299"
+    }
+  ],
+  "/CsrWorkflowStack/DailyMonitorRule/AllowEventRuleCsrWorkflowStackMonitorA7D84C2B": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DailyMonitorRuleAllowEventRuleCsrWorkflowStackMonitorA7D84C2BD6B482FD"
+    }
+  ],
+  "/CsrWorkflowStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/CsrWorkflowStack/Exports/Output{\"Ref\":\"CertLifecycleMachine2C3E2C93\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefCertLifecycleMachine2C3E2C9341D71B8E"
+    }
+  ],
+  "/CsrWorkflowStack/CertLifecycleMachine/Role/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CertLifecycleMachineRole96EEE78C"
+    }
+  ],
+  "/CsrWorkflowStack/CertLifecycleMachine/Role/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CertLifecycleMachineRoleDefaultPolicyA535A401"
+    }
+  ]
+}

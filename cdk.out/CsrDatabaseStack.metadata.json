@@ -1,0 +1,113 @@
+{
+  "/CsrDatabaseStack": [
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Environment",
+          "value": "demo"
+        },
+        {
+          "key": "Project",
+          "value": "CSR-Automated-ITS"
+        }
+      ]
+    }
+  ],
+  "/CsrDatabaseStack/CertInventory": [
+    {
+      "type": "aws:cdk:hasPhysicalName",
+      "data": {
+        "Ref": "CertInventoryD2362D85"
+      }
+    }
+  ],
+  "/CsrDatabaseStack/AuditLog": [
+    {
+      "type": "aws:cdk:hasPhysicalName",
+      "data": {
+        "Ref": "AuditLogA5B7094E"
+      }
+    }
+  ],
+  "/CsrDatabaseStack/Agencies": [
+    {
+      "type": "aws:cdk:hasPhysicalName",
+      "data": {
+        "Ref": "AgenciesC742B758"
+      }
+    }
+  ],
+  "/CsrDatabaseStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/CsrDatabaseStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/CsrDatabaseStack/CertInventory/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CertInventoryD2362D85"
+    }
+  ],
+  "/CsrDatabaseStack/AuditLog/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AuditLogA5B7094E"
+    }
+  ],
+  "/CsrDatabaseStack/Agencies/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AgenciesC742B758"
+    }
+  ],
+  "/CsrDatabaseStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/CsrDatabaseStack/Exports/Output{\"Fn::GetAtt\":[\"CertInventoryD2362D85\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttCertInventoryD2362D85Arn50BB54FA"
+    }
+  ],
+  "/CsrDatabaseStack/Exports/Output{\"Fn::GetAtt\":[\"AuditLogA5B7094E\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttAuditLogA5B7094EArn61A886D9"
+    }
+  ],
+  "/CsrDatabaseStack/Exports/Output{\"Fn::GetAtt\":[\"AgenciesC742B758\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttAgenciesC742B758Arn2978F2BB"
+    }
+  ],
+  "/CsrDatabaseStack/Exports/Output{\"Ref\":\"CertInventoryD2362D85\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefCertInventoryD2362D856C88EF71"
+    }
+  ],
+  "/CsrDatabaseStack/Exports/Output{\"Ref\":\"AuditLogA5B7094E\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefAuditLogA5B7094EA10ED8A0"
+    }
+  ],
+  "/CsrDatabaseStack/Exports/Output{\"Ref\":\"AgenciesC742B758\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefAgenciesC742B758EE8C3088"
+    }
+  ]
+}

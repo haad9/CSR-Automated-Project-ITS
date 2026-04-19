@@ -1,0 +1,265 @@
+{
+ "Resources": {
+  "CertInventoryD2362D85": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "cert_id",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "agency_id",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "expiry_date",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "state",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "GlobalSecondaryIndexes": [
+     {
+      "IndexName": "agency-index",
+      "KeySchema": [
+       {
+        "AttributeName": "agency_id",
+        "KeyType": "HASH"
+       },
+       {
+        "AttributeName": "expiry_date",
+        "KeyType": "RANGE"
+       }
+      ],
+      "Projection": {
+       "ProjectionType": "ALL"
+      }
+     },
+     {
+      "IndexName": "state-index",
+      "KeySchema": [
+       {
+        "AttributeName": "state",
+        "KeyType": "HASH"
+       },
+       {
+        "AttributeName": "expiry_date",
+        "KeyType": "RANGE"
+       }
+      ],
+      "Projection": {
+       "ProjectionType": "ALL"
+      }
+     }
+    ],
+    "KeySchema": [
+     {
+      "AttributeName": "cert_id",
+      "KeyType": "HASH"
+     }
+    ],
+    "StreamSpecification": {
+     "StreamViewType": "NEW_AND_OLD_IMAGES"
+    },
+    "TableName": "csr-cert-inventory",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "CsrDatabaseStack/CertInventory/Resource"
+   }
+  },
+  "AuditLogA5B7094E": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "cert_id",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "timestamp",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "cert_id",
+      "KeyType": "HASH"
+     },
+     {
+      "AttributeName": "timestamp",
+      "KeyType": "RANGE"
+     }
+    ],
+    "TableName": "csr-audit-log",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "CsrDatabaseStack/AuditLog/Resource"
+   }
+  },
+  "AgenciesC742B758": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "agency_id",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "agency_id",
+      "KeyType": "HASH"
+     }
+    ],
+    "TableName": "csr-agencies",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "CsrDatabaseStack/Agencies/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzKx1DNQTCwv1k1OydbNyUzSqw4uSUzO1gEKxadU5iXm5qcAxUISk3JSdZzT8sCMWp2g1OL80qJkICugsiQjP0/fWM/QRM9YMas4M1O3qDSvJDM3VS8IQgMA3wC7QmUAAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrDatabaseStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "ExportsOutputFnGetAttCertInventoryD2362D85Arn50BB54FA": {
+   "Value": {
+    "Fn::GetAtt": [
+     "CertInventoryD2362D85",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "CsrDatabaseStack:ExportsOutputFnGetAttCertInventoryD2362D85Arn50BB54FA"
+   }
+  },
+  "ExportsOutputFnGetAttAuditLogA5B7094EArn61A886D9": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AuditLogA5B7094E",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "CsrDatabaseStack:ExportsOutputFnGetAttAuditLogA5B7094EArn61A886D9"
+   }
+  },
+  "ExportsOutputFnGetAttAgenciesC742B758Arn2978F2BB": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AgenciesC742B758",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "CsrDatabaseStack:ExportsOutputFnGetAttAgenciesC742B758Arn2978F2BB"
+   }
+  },
+  "ExportsOutputRefCertInventoryD2362D856C88EF71": {
+   "Value": {
+    "Ref": "CertInventoryD2362D85"
+   },
+   "Export": {
+    "Name": "CsrDatabaseStack:ExportsOutputRefCertInventoryD2362D856C88EF71"
+   }
+  },
+  "ExportsOutputRefAuditLogA5B7094EA10ED8A0": {
+   "Value": {
+    "Ref": "AuditLogA5B7094E"
+   },
+   "Export": {
+    "Name": "CsrDatabaseStack:ExportsOutputRefAuditLogA5B7094EA10ED8A0"
+   }
+  },
+  "ExportsOutputRefAgenciesC742B758EE8C3088": {
+   "Value": {
+    "Ref": "AgenciesC742B758"
+   },
+   "Export": {
+    "Name": "CsrDatabaseStack:ExportsOutputRefAgenciesC742B758EE8C3088"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

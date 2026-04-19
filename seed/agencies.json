@@ -1,0 +1,23 @@
+[
+  {
+    "agency_id": "agency-mdot",
+    "name": "Mississippi Department of Transportation",
+    "short_name": "MDOT",
+    "contact_email": "webmaster@mdot.ms.gov",
+    "officer_email": "security@mdot.ms.gov"
+  },
+  {
+    "agency_id": "agency-mda",
+    "name": "Mississippi Development Authority",
+    "short_name": "MDA",
+    "contact_email": "webmaster@mda.ms.gov",
+    "officer_email": "security@mda.ms.gov"
+  },
+  {
+    "agency_id": "agency-its",
+    "name": "Mississippi ITS",
+    "short_name": "ITS",
+    "contact_email": "webmaster@its.ms.gov",
+    "officer_email": "security@its.ms.gov"
+  }
+]

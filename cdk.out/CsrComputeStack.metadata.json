@@ -1,0 +1,155 @@
+{
+  "/CsrComputeStack": [
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Environment",
+          "value": "demo"
+        },
+        {
+          "key": "Project",
+          "value": "CSR-Automated-ITS"
+        }
+      ]
+    }
+  ],
+  "/CsrComputeStack/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+    }
+  ],
+  "/CsrComputeStack/InstanceId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "InstanceId"
+    }
+  ],
+  "/CsrComputeStack/InstancePublicIp": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "InstancePublicIp"
+    }
+  ],
+  "/CsrComputeStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    }
+  ],
+  "/CsrComputeStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpc2DFFCF79"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/IGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcIGWA33FC9D0"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/VPCGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcVPCGW3B1C3336"
+    }
+  ],
+  "/CsrComputeStack/Ec2SecurityGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "Ec2SecurityGroup55889913"
+    }
+  ],
+  "/CsrComputeStack/Ec2InstanceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "Ec2InstanceRole212C84F4"
+    }
+  ],
+  "/CsrComputeStack/CsrDemoInstance/InstanceProfile": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrDemoInstanceInstanceProfile867FAA25"
+    }
+  ],
+  "/CsrComputeStack/CsrDemoInstance/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrDemoInstance31206B44"
+    }
+  ],
+  "/CsrComputeStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/publicSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcpublicSubnet1Subnet4287C12D"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/publicSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcpublicSubnet1RouteTable0E437D5B"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/publicSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcpublicSubnet1RouteTableAssociationFDD1AB0E"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/publicSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcpublicSubnet1DefaultRoute53FBCFD4"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/publicSubnet1/EIP": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcpublicSubnet1EIPD5EC26D8"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/publicSubnet1/NATGateway": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcpublicSubnet1NATGatewayC0855A94"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/privateSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcprivateSubnet1Subnet26CD4EA2"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/privateSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcprivateSubnet1RouteTable30DC2AC1"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/privateSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcprivateSubnet1RouteTableAssociationF1E5A808"
+    }
+  ],
+  "/CsrComputeStack/CsrVpc/privateSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CsrVpcprivateSubnet1DefaultRoute631AC7EC"
+    }
+  ]
+}

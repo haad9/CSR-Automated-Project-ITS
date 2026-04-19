@@ -1,0 +1,144 @@
+{
+  "Comment": "SSL Certificate Lifecycle Automation — Mississippi ITS/MDA",
+  "StartAt": "RenewalInitiated",
+  "States": {
+    "RenewalInitiated": {
+      "Type": "Task",
+      "Resource": "${RenewalInitiatorArn}",
+      "ResultPath": "$",
+      "Next": "CSRGenerated",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.error_info",
+          "Next": "HandleException"
+        }
+      ],
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 5,
+          "MaxAttempts": 2,
+          "BackoffRate": 2
+        }
+      ]
+    },
+    "CSRGenerated": {
+      "Type": "Task",
+      "Resource": "${CSRGeneratorArn}",
+      "ResultPath": "$",
+      "Next": "CertificateIssued",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.error_info",
+          "Next": "HandleException"
+        }
+      ],
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 5,
+          "MaxAttempts": 2,
+          "BackoffRate": 2
+        }
+      ]
+    },
+    "CertificateIssued": {
+      "Type": "Task",
+      "Resource": "${AcmeClientArn}",
+      "ResultPath": "$",
+      "Next": "GovernanceGate",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.error_info",
+          "Next": "HandleException"
+        }
+      ],
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ]
+    },
+    "GovernanceGate": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
+      "Parameters": {
+        "FunctionName": "${GovernanceGateArn}",
+        "Payload": {
+          "task_token.$": "$$.Task.Token",
+          "input.$": "$"
+        }
+      },
+      "ResultPath": "$",
+      "TimeoutSeconds": 86400,
+      "Next": "CertificateDeployed",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.error_info",
+          "Next": "HandleException"
+        }
+      ]
+    },
+    "CertificateDeployed": {
+      "Type": "Task",
+      "Resource": "${DeployerArn}",
+      "ResultPath": "$",
+      "Next": "CertificateValidated",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.error_info",
+          "Next": "HandleException"
+        }
+      ],
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ]
+    },
+    "CertificateValidated": {
+      "Type": "Task",
+      "Resource": "${ValidatorArn}",
+      "ResultPath": "$",
+      "Next": "RenewalClosed",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "ResultPath": "$.error_info",
+          "Next": "HandleException"
+        }
+      ],
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ]
+    },
+    "RenewalClosed": {
+      "Type": "Task",
+      "Resource": "${RenewalCloserArn}",
+      "ResultPath": "$",
+      "End": true
+    },
+    "HandleException": {
+      "Type": "Task",
+      "Resource": "${ExceptionHandlerArn}",
+      "ResultPath": "$",
+      "End": true
+    }
+  }
+}

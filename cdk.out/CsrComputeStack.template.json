@@ -1,0 +1,565 @@
+{
+ "Resources": {
+  "CsrVpc2DFFCF79": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Name",
+      "Value": "csr-vpc"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/Resource"
+   }
+  },
+  "CsrVpcpublicSubnet1Subnet4287C12D": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Name",
+      "Value": "CsrComputeStack/CsrVpc/publicSubnet1"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ],
+    "VpcId": {
+     "Ref": "CsrVpc2DFFCF79"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/publicSubnet1/Subnet"
+   }
+  },
+  "CsrVpcpublicSubnet1RouteTable0E437D5B": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Name",
+      "Value": "CsrComputeStack/CsrVpc/publicSubnet1"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ],
+    "VpcId": {
+     "Ref": "CsrVpc2DFFCF79"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/publicSubnet1/RouteTable"
+   }
+  },
+  "CsrVpcpublicSubnet1RouteTableAssociationFDD1AB0E": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "CsrVpcpublicSubnet1RouteTable0E437D5B"
+    },
+    "SubnetId": {
+     "Ref": "CsrVpcpublicSubnet1Subnet4287C12D"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/publicSubnet1/RouteTableAssociation"
+   }
+  },
+  "CsrVpcpublicSubnet1DefaultRoute53FBCFD4": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "CsrVpcIGWA33FC9D0"
+    },
+    "RouteTableId": {
+     "Ref": "CsrVpcpublicSubnet1RouteTable0E437D5B"
+    }
+   },
+   "DependsOn": [
+    "CsrVpcVPCGW3B1C3336"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/publicSubnet1/DefaultRoute"
+   }
+  },
+  "CsrVpcpublicSubnet1EIPD5EC26D8": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Name",
+      "Value": "CsrComputeStack/CsrVpc/publicSubnet1"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/publicSubnet1/EIP"
+   }
+  },
+  "CsrVpcpublicSubnet1NATGatewayC0855A94": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "CsrVpcpublicSubnet1EIPD5EC26D8",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "CsrVpcpublicSubnet1Subnet4287C12D"
+    },
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Name",
+      "Value": "CsrComputeStack/CsrVpc/publicSubnet1"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ]
+   },
+   "DependsOn": [
+    "CsrVpcpublicSubnet1DefaultRoute53FBCFD4",
+    "CsrVpcpublicSubnet1RouteTableAssociationFDD1AB0E"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/publicSubnet1/NATGateway"
+   }
+  },
+  "CsrVpcprivateSubnet1Subnet26CD4EA2": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.1.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Name",
+      "Value": "CsrComputeStack/CsrVpc/privateSubnet1"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ],
+    "VpcId": {
+     "Ref": "CsrVpc2DFFCF79"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/privateSubnet1/Subnet"
+   }
+  },
+  "CsrVpcprivateSubnet1RouteTable30DC2AC1": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Name",
+      "Value": "CsrComputeStack/CsrVpc/privateSubnet1"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ],
+    "VpcId": {
+     "Ref": "CsrVpc2DFFCF79"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/privateSubnet1/RouteTable"
+   }
+  },
+  "CsrVpcprivateSubnet1RouteTableAssociationF1E5A808": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "CsrVpcprivateSubnet1RouteTable30DC2AC1"
+    },
+    "SubnetId": {
+     "Ref": "CsrVpcprivateSubnet1Subnet26CD4EA2"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/privateSubnet1/RouteTableAssociation"
+   }
+  },
+  "CsrVpcprivateSubnet1DefaultRoute631AC7EC": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "CsrVpcpublicSubnet1NATGatewayC0855A94"
+    },
+    "RouteTableId": {
+     "Ref": "CsrVpcprivateSubnet1RouteTable30DC2AC1"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/privateSubnet1/DefaultRoute"
+   }
+  },
+  "CsrVpcIGWA33FC9D0": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Name",
+      "Value": "csr-vpc"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/IGW"
+   }
+  },
+  "CsrVpcVPCGW3B1C3336": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "CsrVpcIGWA33FC9D0"
+    },
+    "VpcId": {
+     "Ref": "CsrVpc2DFFCF79"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrVpc/VPCGW"
+   }
+  },
+  "Ec2SecurityGroup55889913": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "CSR demo EC2: Pebble CA + Nginx",
+    "GroupName": "csr-ec2-sg",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "HTTPS Nginx",
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     },
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "HTTP Nginx",
+      "FromPort": 80,
+      "IpProtocol": "tcp",
+      "ToPort": 80
+     },
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "CsrVpc2DFFCF79",
+        "CidrBlock"
+       ]
+      },
+      "Description": "Pebble ACME",
+      "FromPort": 14000,
+      "IpProtocol": "tcp",
+      "ToPort": 14000
+     },
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "CsrVpc2DFFCF79",
+        "CidrBlock"
+       ]
+      },
+      "Description": "Pebble mgmt",
+      "FromPort": 15000,
+      "IpProtocol": "tcp",
+      "ToPort": 15000
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ],
+    "VpcId": {
+     "Ref": "CsrVpc2DFFCF79"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/Ec2SecurityGroup/Resource"
+   }
+  },
+  "Ec2InstanceRole212C84F4": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ec2.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/AmazonSSMManagedInstanceCore"
+       ]
+      ]
+     }
+    ],
+    "RoleName": "csr-ec2-role",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/Ec2InstanceRole/Resource"
+   }
+  },
+  "CsrDemoInstanceInstanceProfile867FAA25": {
+   "Type": "AWS::IAM::InstanceProfile",
+   "Properties": {
+    "Roles": [
+     {
+      "Ref": "Ec2InstanceRole212C84F4"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrDemoInstance/InstanceProfile"
+   }
+  },
+  "CsrDemoInstance31206B44": {
+   "Type": "AWS::EC2::Instance",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "IamInstanceProfile": {
+     "Ref": "CsrDemoInstanceInstanceProfile867FAA25"
+    },
+    "ImageId": {
+     "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+    },
+    "InstanceType": "t3.small",
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "Ec2SecurityGroup55889913",
+       "GroupId"
+      ]
+     }
+    ],
+    "SubnetId": {
+     "Ref": "CsrVpcpublicSubnet1Subnet4287C12D"
+    },
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "demo"
+     },
+     {
+      "Key": "Name",
+      "Value": "csr-demo-server"
+     },
+     {
+      "Key": "Project",
+      "Value": "CSR-Automated-ITS"
+     }
+    ],
+    "UserData": {
+     "Fn::Base64": "#!/bin/bash\nset -e\nyum update -y\namazon-linux-extras install docker -y\nsystemctl start docker\nsystemctl enable docker\ncurl -L \"https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose\nchmod +x /usr/local/bin/docker-compose\namazon-linux-extras install nginx1 -y\nsystemctl start nginx\nsystemctl enable nginx\nmkdir -p /opt/pebble\ncat > /opt/pebble/docker-compose.yml << 'EOF'\nversion: '3'\nservices:\n  pebble:\n    image: letsencrypt/pebble:latest\n    ports:\n      - '14000:14000'\n      - '15000:15000'\n    environment:\n      - PEBBLE_VA_NOSLEEP=1\n      - PEBBLE_VA_ALWAYS_VALID=1\n    command: pebble -config /test/config/pebble-config.json\n    volumes:\n      - /opt/pebble/config:/test/config\nEOF\nmkdir -p /opt/pebble/config\ncat > /opt/pebble/config/pebble-config.json << 'EOF'\n{\n  \"pebble\": {\n    \"listenAddress\": \"0.0.0.0:14000\",\n    \"managementListenAddress\": \"0.0.0.0:15000\",\n    \"certificate\": \"test/certs/localhost/cert.pem\",\n    \"privateKey\": \"test/certs/localhost/key.pem\",\n    \"httpPort\": 5002,\n    \"tlsPort\": 5001,\n    \"ocspResponderURL\": \"\",\n    \"externalAccountBindingRequired\": false\n  }\n}\nEOF\ncd /opt/pebble && docker-compose up -d\necho 'CSR EC2 setup complete' > /var/log/csr-setup.log"
+    }
+   },
+   "DependsOn": [
+    "Ec2InstanceRole212C84F4"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CsrDemoInstance/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WOwW7CMAyGn4V7GrbChSNCE+oFonbiOrmZEYY2qRJnqKr67kuXddVO/+8vjvXlMt/u5MsKnj7Tn4+soVoOFYN+iIg+BtS5HC6dFoeruaiDUKFuSFehNsgTW1ppA+M71A0ufGF7760mYLLmb3kqb4Wa4gR8BMYn9EI5+op1OVwYRhf7vJBMfqc9R9dbi4ZFhTo44v7obOh+HP6BwngGozGdTH0UBK0cSpuk55yflbNXanAcRYneBpc+K3DQYnSahnPgLvAoVM83a9Yb+bqVm9XdE2UuGKYWZZnyG6ASwvNqAQAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "CsrComputeStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": {
+   "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+   "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+  },
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Outputs": {
+  "InstanceId": {
+   "Value": {
+    "Ref": "CsrDemoInstance31206B44"
+   }
+  },
+  "InstancePublicIp": {
+   "Value": {
+    "Fn::GetAtt": [
+     "CsrDemoInstance31206B44",
+     "PublicIp"
+    ]
+   }
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

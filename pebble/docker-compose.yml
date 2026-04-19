@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  pebble:
+    image: letsencrypt/pebble:latest
+    container_name: pebble-ca
+    restart: unless-stopped
+    ports:
+      - "14000:14000"   # ACME endpoint
+      - "15000:15000"   # Management API
+    environment:
+      - PEBBLE_VA_NOSLEEP=1         # No validation sleep delay
+      - PEBBLE_VA_ALWAYS_VALID=1    # Auto-approve all ACME challenges
+      - PEBBLE_WFE_NONCEREJECT=0    # Accept any nonce
+    command: pebble -config /test/config/pebble-config.json -strict=false
+    volumes:
+      - ./config:/test/config
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "--no-check-certificate", "https://localhost:14000/dir"]
+      interval: 10s
+      timeout: 5s
+      retries: 3

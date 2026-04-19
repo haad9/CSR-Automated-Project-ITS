@@ -1,0 +1,181 @@
+import React, { useState, useEffect, useRef } from 'react'
+import axios from 'axios'
+import { FileText, Sparkles, Download, Clock, RefreshCw } from 'lucide-react'
+import { API } from '../lib/constants'
+
+export default function Reports() {
+  const [reports,    setReports]    = useState([])
+  const [generating, setGenerating] = useState(false)
+  const [report,     setReport]     = useState(null)
+  const [displayed,  setDisplayed]  = useState('')
+  const [charIdx,    setCharIdx]    = useState(0)
+  const intervalRef                 = useRef(null)
+
+  const fetchReports = async () => {
+    try {
+      const r = await axios.get(`${API}/reports`)
+      setReports(r.data.reports || [])
+    } catch(e) {}
+  }
+
+  useEffect(() => { fetchReports() }, [])
+
+  // Reset typewriter when new report arrives
+  useEffect(() => {
+    if (!report) return
+    setDisplayed('')
+    setCharIdx(0)
+  }, [report])
+
+  // Typewriter tick
+  useEffect(() => {
+    if (!report || charIdx >= report.length) return
+    intervalRef.current = setTimeout(() => {
+      setDisplayed(report.slice(0, charIdx + 1))
+      setCharIdx(c => c + 1)
+    }, 8)
+    return () => clearTimeout(intervalRef.current)
+  }, [report, charIdx])
+
+  const generate = async () => {
+    setGenerating(true)
+    setReport(null)
+    setDisplayed('')
+    try {
+      const r = await axios.post(`${API}/reports`, { report_type: 'weekly' })
+      setReport(r.data.full_report || r.data.report_preview || 'Report generated.')
+      await fetchReports()
+    } catch(e) {
+      setReport('⚠️ Could not generate report — check Bedrock is enabled in your AWS account.')
+    } finally {
+      setGenerating(false)
+    }
+  }
+
+  const download = () => {
+    const blob = new Blob([report], { type: 'text/markdown' })
+    const url  = URL.createObjectURL(blob)
+    const a    = document.createElement('a')
+    a.href = url
+    a.download = `cert-report-${new Date().toISOString().split('T')[0]}.md`
+    a.click()
+  }
+
+  return (
+    <div style={{ padding:24, display:'flex', flexDirection:'column', gap:20 }} className="fade-up">
+
+      {/* Accent bar */}
+      <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:4 }}>
+        <div style={{ width:3, height:24, borderRadius:99, background:'#a855f7' }} />
+        <span style={{ fontSize:12, color:'#a855f7', fontWeight:600, letterSpacing:1 }}>AI-GENERATED REPORTS</span>
+      </div>
+
+      {/* Header card with generate button */}
+      <div style={{ borderRadius:16, padding:20, display:'flex', alignItems:'center', justifyContent:'space-between', background:'linear-gradient(135deg,#1e0a4a,#0c1a4a)', border:'1px solid rgba(168,85,247,0.3)' }}>
+        <div>
+          <h2 style={{ fontWeight:700, color:'#fff', fontSize:17, display:'flex', alignItems:'center', gap:8, marginBottom:6 }}>
+            <Sparkles size={18} color="#c084fc" />
+            AI-Generated Reports
+          </h2>
+          <p style={{ fontSize:13, color:'#a78bfa', lineHeight:1.5, maxWidth:400 }}>
+            Claude Sonnet reads all your certificate data and writes a professional executive report — live.
+          </p>
+        </div>
+        <button onClick={generate} disabled={generating}
+          style={{
+            display:'flex', alignItems:'center', gap:8, padding:'12px 20px',
+            borderRadius:12, fontWeight:700, fontSize:14, cursor: generating ? 'default' : 'pointer',
+            background:'linear-gradient(135deg,#6d28d9,#7c3aed)',
+            color:'#fff', border:'none', fontFamily:'inherit',
+            boxShadow:'0 4px 20px rgba(124,58,237,0.4)',
+            opacity: generating ? 0.8 : 1, whiteSpace:'nowrap',
+          }}>
+          {generating
+            ? <><SpinIcon /><span>Writing report...</span></>
+            : <><Sparkles size={16} /><span>Generate Weekly Report</span></>
+          }
+        </button>
+      </div>
+
+      {/* Generating indicator */}
+      {generating && (
+        <div style={{ borderRadius:14, padding:'14px 16px', display:'flex', alignItems:'center', gap:12, background:'rgba(168,85,247,0.06)', border:'1px solid rgba(168,85,247,0.25)' }}>
+          <div style={{ width:8, height:8, borderRadius:'50%', background:'#a855f7', animation:'pulse 1.5s infinite' }} />
+          <span style={{ color:'#c084fc', fontSize:13 }}>Claude Sonnet is reading your data and writing the report...</span>
+        </div>
+      )}
+
+      {/* Live typewriter report */}
+      {report && (
+        <div style={{ borderRadius:16, overflow:'hidden', background:'#0d0d1a', border:'1px solid rgba(168,85,247,0.3)' }} className="fade-up">
+          <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'12px 20px', borderBottom:'1px solid #1a1a2e', background:'#111118' }}>
+            <div style={{ display:'flex', alignItems:'center', gap:8, fontSize:13, color:'#c084fc' }}>
+              <Sparkles size={14} />
+              Generated by Claude Sonnet · {new Date().toLocaleString()}
+            </div>
+            {charIdx >= report.length && (
+              <button onClick={download}
+                style={{
+                  display:'flex', alignItems:'center', gap:6, fontSize:12, padding:'6px 12px',
+                  borderRadius:8, background:'rgba(168,85,247,0.1)', color:'#a78bfa',
+                  border:'1px solid rgba(168,85,247,0.3)', cursor:'pointer', fontFamily:'inherit',
+                }}>
+                <Download size={12} /> Download .md
+              </button>
+            )}
+          </div>
+          <div style={{ padding:20 }}>
+            <pre style={{ fontSize:13, lineHeight:1.7, whiteSpace:'pre-wrap', fontFamily:'inherit', color:'#e2e8f0' }}>
+              {displayed}
+              {charIdx < report.length && (
+                <span style={{ display:'inline-block', width:2, height:16, background:'#a855f7', marginLeft:2, verticalAlign:'middle', animation:'pulse 1s infinite' }} />
+              )}
+            </pre>
+          </div>
+        </div>
+      )}
+
+      {/* Past reports */}
+      {reports.length > 0 && (
+        <div>
+          <h3 style={{ fontWeight:600, color:'#fff', fontSize:14, marginBottom:12, display:'flex', alignItems:'center', gap:8 }}>
+            <Clock size={14} color="#6b7280" />
+            Past Reports
+          </h3>
+          <div style={{ display:'flex', flexDirection:'column', gap:8 }}>
+            {reports.map((r, i) => (
+              <div key={i} style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'12px 16px', borderRadius:12, background:'#0d0d1a', border:'1px solid #1a1a2e' }}>
+                <div style={{ display:'flex', alignItems:'center', gap:10 }}>
+                  <FileText size={14} color="#6b7280" />
+                  <span style={{ fontSize:13, color:'#9ca3af' }}>{r.key?.split('/').pop()}</span>
+                </div>
+                <span style={{ fontSize:12, color:'#4b5563' }}>
+                  {new Date(r.last_modified).toLocaleString()}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Feature cards */}
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:14 }}>
+        {[
+          { icon:'📊', title:'All cert data analyzed',     desc:'Certificate status, expiry dates, agency breakdown' },
+          { icon:'📋', title:'Executive summary included', desc:'Written for leadership — clear, concise, professional' },
+          { icon:'🎯', title:'Recommendations included',   desc:'Claude identifies patterns and suggests improvements' },
+        ].map(item => (
+          <div key={item.title} style={{ borderRadius:16, padding:16, textAlign:'center', background:'#0d0d1a', border:'1px solid #1a1a2e' }}>
+            <div style={{ fontSize:30, marginBottom:10 }}>{item.icon}</div>
+            <div style={{ fontWeight:600, color:'#fff', fontSize:13, marginBottom:6 }}>{item.title}</div>
+            <div style={{ fontSize:12, color:'#6b7280', lineHeight:1.5 }}>{item.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function SpinIcon() {
+  return <div style={{ width:16, height:16, border:'2px solid rgba(255,255,255,0.3)', borderTopColor:'#fff', borderRadius:'50%', animation:'spin 1s linear infinite' }} />
+}

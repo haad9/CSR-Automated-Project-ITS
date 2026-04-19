@@ -1,0 +1,21 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "f20d924b676c87375cb0724ad317c9ade39bd6325966ec8b220f332c08e23634": {
+      "displayName": "CsrDatabaseStack Template",
+      "source": {
+        "path": "CsrDatabaseStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-us-east-1-63409cc2": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-us-east-1",
+          "objectKey": "f20d924b676c87375cb0724ad317c9ade39bd6325966ec8b220f332c08e23634.json",
+          "region": "us-east-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-us-east-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

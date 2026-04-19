@@ -1,0 +1,64 @@
+# Mississippi ITS — SSL Certificate Lifecycle Policy
+# Enforced by the automated CSR system
+---
+version: "1.0"
+effective_date: "2025-01-01"
+owner: "Mississippi Information Technology Services"
+
+certificate_standards:
+  key_algorithm: RSA
+  key_size: 2048
+  signature_algorithm: SHA256withRSA
+  validity_days: 47  # ITS-mandated renewal cycle
+  renewal_threshold_days: 47  # Trigger renewal when this many days remain
+
+lifecycle_states:
+  - Active
+  - "Expiration Detected"
+  - "Renewal Initiated"
+  - "CSR Generated"
+  - "Certificate Issued"
+  - "Certificate Deployed"
+  - "Certificate Validated"
+  - "Renewal Closed"
+  - Exception
+
+governance:
+  require_human_approval: true
+  approval_roles:
+    - "Security Officer"
+    - "IT Director"
+  approval_timeout_hours: 24
+  approval_method: "email-link"
+
+audit:
+  log_all_state_transitions: true
+  log_retention_days: 2555  # 7 years per Mississippi record retention
+  immutable: true
+  export_format: ["json", "csv"]
+
+notifications:
+  renewal_started: true
+  renewal_complete: true
+  exceptions: true
+  channels:
+    - sns
+    - email
+
+ai_integration:
+  exception_analysis:
+    provider: "AWS Bedrock"
+    model: "anthropic.claude-haiku-20240307-v1:0"
+    enabled: true
+  report_generation:
+    provider: "AWS Bedrock"
+    model: "anthropic.claude-sonnet-4-5"
+    schedule: "weekly"
+    enabled: true
+
+security:
+  private_key_storage: "S3 (AES-256 SSE)"
+  certificate_storage: "S3 (AES-256 SSE)"
+  iam_least_privilege: true
+  no_ssh_access: true  # EC2 accessed via SSM only
+  vpc_isolated: true
